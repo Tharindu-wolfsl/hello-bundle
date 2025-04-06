@@ -1,16 +1,22 @@
-import Layout from "@/components/layout/Layout";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import Navigation from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Your Brand",
-  description: "Your brand description here",
+  title: "Hello Bundle - Parental Leave Support",
+  description: "Supporting parents through their parental leave journey",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <Layout>{children}</Layout>
+      <body className={inter.className}>
+        <Navigation />
+        {children}
+        <Footer />
       </body>
     </html>
   );
