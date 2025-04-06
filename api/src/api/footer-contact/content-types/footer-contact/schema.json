@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "footer_contacts",
+  "info": {
+    "singularName": "footer-contact",
+    "pluralName": "footer-contacts",
+    "displayName": "footer-contact"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "contact": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

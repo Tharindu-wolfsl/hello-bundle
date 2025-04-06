@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "footer_logos",
+  "info": {
+    "singularName": "footer-logo",
+    "pluralName": "footer-logos",
+    "displayName": "footer-logo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

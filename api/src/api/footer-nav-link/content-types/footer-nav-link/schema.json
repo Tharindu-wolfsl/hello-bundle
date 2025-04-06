@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "footer_nav_links",
+  "info": {
+    "singularName": "footer-nav-link",
+    "pluralName": "footer-nav-links",
+    "displayName": "footer-nav-link"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
