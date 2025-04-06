@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main className="min-h-screen p-8">
       <div className="max-w-4xl mx-auto">
