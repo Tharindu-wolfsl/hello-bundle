@@ -3,9 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const menuItems = [
     { name: "Home", href: "/" },
@@ -15,6 +17,11 @@ export default function Navigation() {
     { name: "Blog", href: "/blog" },
     { name: "Contact Us", href: "/contact", isButton: true },
   ];
+
+  const isActive = (path) => {
+    if (path === "/" && pathname !== "/") return false;
+    return pathname.startsWith(path);
+  };
 
   return (
     <nav className="bg-[#421520] text-white sticky top-0 w-full z-50">
@@ -41,6 +48,8 @@ export default function Navigation() {
                 className={`${
                   item.isButton
                     ? "bg-[#E9B8CC] text-gray-800 px-4 py-2 rounded-md hover:bg-[#f4b6ce] transition-colors"
+                    : isActive(item.href)
+                    ? "text-[#C7597F]"
                     : "text-gray-300 hover:text-[#C7597F]"
                 } text-sm font-medium`}
               >
@@ -101,9 +110,11 @@ export default function Navigation() {
                 href={item.href}
                 className={`${
                   item.isButton
-                    ? "bg-pink-500 text-white"
+                    ? "bg-[#E9B8CC] text-gray-800"
+                    : isActive(item.href)
+                    ? "text-[#C7597F]"
                     : "text-gray-300 hover:text-white"
-                } block px-3 py-2 rounded-md text-base font-medium`}
+                } block px-3 py-2 rounded-md text-base font-medium w-fit`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

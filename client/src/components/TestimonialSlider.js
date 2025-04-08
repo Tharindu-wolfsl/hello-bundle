@@ -5,12 +5,54 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Skeleton from "@/components/ui/Skeleton";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-export default function TestimonialSlider({ testimonials }) {
+export default function TestimonialSlider({ testimonials = [] }) {
   const [swiper, setSwiper] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="relative testimonials-slider px-4 lg:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[1, 2, 3].map((item) => (
+            <div
+              key={item}
+              className="bg-[#FDF4F7] rounded-2xl p-8 shadow-sm h-full"
+            >
+              <div className="mb-6">
+                <div className="mb-6">
+                  <Skeleton className="w-5 h-5" />
+                </div>
+                <Skeleton className="h-20 w-full" />
+              </div>
+              <div className="flex items-center gap-4 mt-6 border-t border-gray-100 pt-6">
+                <Skeleton className="w-12 h-12 rounded-xl" />
+                <Skeleton className="h-6 w-32" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // If testimonials is not an array or empty, don't render anything
+  if (!Array.isArray(testimonials) || testimonials.length === 0) {
+    return null;
+  }
 
   return (
     <div className="relative testimonials-slider px-4 lg:px-0">
@@ -18,11 +60,15 @@ export default function TestimonialSlider({ testimonials }) {
         modules={[Pagination, Navigation, Autoplay]}
         spaceBetween={24}
         slidesPerView={3}
-        loop={true}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
+        loop={testimonials.length > 1}
+        autoplay={
+          testimonials.length > 1
+            ? {
+                delay: 5000,
+                disableOnInteraction: false,
+              }
+            : false
+        }
         pagination={{
           clickable: true,
           el: ".swiper-pagination",
@@ -81,21 +127,23 @@ export default function TestimonialSlider({ testimonials }) {
       </Swiper>
 
       {/* Navigation and Pagination Container */}
-      <div className="flex items-center justify-center gap-6 mt-8">
-        <button
-          onClick={() => swiper?.slidePrev()}
-          className="bg-transparent w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#FDF4F7] transition-colors cursor-pointer"
-        >
-          <ChevronLeft className="w-6 h-6 text-[#421520]" />
-        </button>
-        <div className="swiper-pagination"></div>
-        <button
-          onClick={() => swiper?.slideNext()}
-          className="bg-transparent w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#FDF4F7] transition-colors cursor-pointer"
-        >
-          <ChevronRight className="w-6 h-6 text-[#421520]" />
-        </button>
-      </div>
+      {testimonials.length > 1 && (
+        <div className="flex items-center justify-center gap-6 mt-8">
+          <button
+            onClick={() => swiper?.slidePrev()}
+            className="bg-transparent w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#FDF4F7] transition-colors cursor-pointer"
+          >
+            <ChevronLeft className="w-6 h-6 text-[#421520]" />
+          </button>
+          <div className="swiper-pagination"></div>
+          <button
+            onClick={() => swiper?.slideNext()}
+            className="bg-transparent w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#FDF4F7] transition-colors cursor-pointer"
+          >
+            <ChevronRight className="w-6 h-6 text-[#421520]" />
+          </button>
+        </div>
+      )}
 
       <style jsx global>{`
         .testimonials-slider .swiper-pagination {
