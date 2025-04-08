@@ -16,9 +16,11 @@
     "@heroui/system": "^2.4.13",
     "@heroui/theme": "^2.4.13",
     "framer-motion": "^12.6.3",
+    "lucide-react": "^0.487.0",
     "next": "15.2.4",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "swiper": "^11.2.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

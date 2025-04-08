@@ -1,9 +1,13 @@
-import { Inter } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-urbanist",
+});
 
 export const metadata = {
   title: "Hello Bundle - Parental Leave Support",
@@ -13,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${urbanist.variable} font-urbanist`}>
         <Navigation />
         {children}
         <Footer />
