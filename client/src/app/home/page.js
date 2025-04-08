@@ -37,7 +37,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-white py-16">
+      <section className="bg-white lg:pt-16 md:pb-16 pt-4 pb-8">
         <div className="max-w-full mx-auto px-4 sm:px-0 lg:px-0">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative h-[500px] overflow-hidden">
@@ -45,7 +45,7 @@ export default function HomePage() {
                 src={hero.image}
                 alt="Mother and baby"
                 fill
-                className="object-cover rounded-tr-lg rounded-br-lg"
+                className="object-cover rounded-lg md:rounded-r-lg md:rounded-l-none"
               />
             </div>
             <div className="w-full md:w-3/4">
@@ -75,15 +75,15 @@ export default function HomePage() {
 
       {/* Features Section */}
       {features.map((feature) => (
-        <section key={feature.id} className={"bg-white"}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-[#F8EBF0] rounded-lg">
+        <section key={feature.id} className="bg-white py-4 sm:py-8 lg:py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 items-center bg-[#F8EBF0] rounded-lg overflow-hidden">
               <div
-                className={`relative h-[400px] overflow-hidden ${
+                className={`relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] ${
                   feature.id === 1
-                    ? "rounded-tl-lg rounded-bl-lg"
-                    : "rounded-tr-lg rounded-br-lg"
-                } ${feature.id % 2 === 0 ? "order-2" : "order-1"}`}
+                    ? "md:rounded-tl-lg md:rounded-bl-lg"
+                    : "md:rounded-tr-lg md:rounded-br-lg"
+                } ${feature.id % 2 === 0 ? "md:order-2" : "md:order-1"}`}
               >
                 <Image
                   src={feature.image}
@@ -91,23 +91,26 @@ export default function HomePage() {
                   fill
                   className={`object-cover ${
                     feature.id === 1
-                      ? "rounded-tl-lg rounded-bl-lg"
-                      : "rounded-tr-lg rounded-br-lg"
+                      ? "md:rounded-tl-lg md:rounded-bl-lg"
+                      : "md:rounded-tr-lg md:rounded-br-lg"
                   }`}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
               <div
-                className={
-                  feature.id % 2 === 0 ? "order-1 px-8" : "order-2 px-8"
-                }
+                className={`px-4 py-6 sm:px-6 sm:py-8 md:py-12 ${
+                  feature.id % 2 === 0 ? "md:order-1" : "md:order-2"
+                }`}
               >
-                <h2 className="text-3xl font-bold text-[#421520] mb-6">
+                <h2 className="text-2xl sm:text-2xl lg:text-3xl font-bold text-[#421520] mb-4 sm:mb-6">
                   {feature.title}
                 </h2>
-                <p className="text-gray-600 mb-8">{feature.description}</p>
+                <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">
+                  {feature.description}
+                </p>
                 <Link
                   href={feature.ctaLink}
-                  className="bg-[#C7597F] text-gray-100 px-6 py-3 rounded-md hover:bg-[#9c4e69] transition-colors inline-block"
+                  className="bg-[#C7597F] text-gray-100 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base rounded-md hover:bg-[#9c4e69] transition-colors inline-block"
                 >
                   {feature.ctaText}
                 </Link>

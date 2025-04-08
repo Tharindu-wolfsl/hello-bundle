@@ -13,7 +13,7 @@ export default function TestimonialSlider({ testimonials }) {
   const [swiper, setSwiper] = useState(null);
 
   return (
-    <div className="relative testimonials-slider">
+    <div className="relative testimonials-slider px-4 lg:px-0">
       <Swiper
         modules={[Pagination, Navigation, Autoplay]}
         spaceBetween={24}
