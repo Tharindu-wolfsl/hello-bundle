@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_page_section1s",
+  "info": {
+    "singularName": "home-page-section1",
+    "pluralName": "home-page-section1s",
+    "displayName": "home-page-section1",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "button_title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

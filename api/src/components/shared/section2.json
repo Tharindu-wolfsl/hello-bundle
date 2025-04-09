@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_shared_section2s",
+  "info": {
+    "displayName": "section2",
+    "icon": "book",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "button_text": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "alignment": {
+      "type": "enumeration",
+      "enum": [
+        "LEFT",
+        "RIGHT"
+      ],
+      "required": true,
+      "default": "LEFT"
+    }
+  }
+}

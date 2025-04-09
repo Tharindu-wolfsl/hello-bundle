@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_page_section2s",
+  "info": {
+    "singularName": "home-page-section2",
+    "pluralName": "home-page-section2s",
+    "displayName": "home-page-section2"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.section2"
+      ]
+    }
+  }
+}

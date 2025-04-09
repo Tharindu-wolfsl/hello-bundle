@@ -4,7 +4,8 @@
   "info": {
     "singularName": "footer-contact",
     "pluralName": "footer-contacts",
-    "displayName": "footer-contact"
+    "displayName": "footer-contact",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,14 +18,15 @@
       "type": "string"
     },
     "icon": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }

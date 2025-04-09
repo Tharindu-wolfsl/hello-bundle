@@ -373,6 +373,7 @@ export interface ApiFooterContactFooterContact
   extends Struct.CollectionTypeSchema {
   collectionName: 'footer_contacts';
   info: {
+    description: '';
     displayName: 'footer-contact';
     pluralName: 'footer-contacts';
     singularName: 'footer-contact';
@@ -553,6 +554,69 @@ export interface ApiHeaderHeader extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     path: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHomePageSection1HomePageSection1
+  extends Struct.SingleTypeSchema {
+  collectionName: 'home_page_section1s';
+  info: {
+    description: '';
+    displayName: 'home-page-section1';
+    pluralName: 'home-page-section1s';
+    singularName: 'home-page-section1';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    button_title: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page-section1.home-page-section1'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHomePageSection2HomePageSection2
+  extends Struct.SingleTypeSchema {
+  collectionName: 'home_page_section2s';
+  info: {
+    displayName: 'home-page-section2';
+    pluralName: 'home-page-section2s';
+    singularName: 'home-page-section2';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page-section2.home-page-section2'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<['shared.section2']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1074,6 +1138,8 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::header-logo.header-logo': ApiHeaderLogoHeaderLogo;
       'api::header.header': ApiHeaderHeader;
+      'api::home-page-section1.home-page-section1': ApiHomePageSection1HomePageSection1;
+      'api::home-page-section2.home-page-section2': ApiHomePageSection2HomePageSection2;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
