@@ -369,6 +369,34 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAppHeaderAppHeader extends Struct.SingleTypeSchema {
+  collectionName: 'app_headers';
+  info: {
+    displayName: 'app-header';
+    pluralName: 'app-headers';
+    singularName: 'app-header';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    header_content: Schema.Attribute.DynamicZone<['shared.header-logo']>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::app-header.app-header'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFooterContactFooterContact
   extends Struct.CollectionTypeSchema {
   collectionName: 'footer_contacts';
@@ -1132,6 +1160,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::app-header.app-header': ApiAppHeaderAppHeader;
       'api::footer-contact.footer-contact': ApiFooterContactFooterContact;
       'api::footer-logo.footer-logo': ApiFooterLogoFooterLogo;
       'api::footer-nav-link.footer-nav-link': ApiFooterNavLinkFooterNavLink;

@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "app_headers",
+  "info": {
+    "singularName": "app-header",
+    "pluralName": "app-headers",
+    "displayName": "app-header"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "header_content": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.header-logo"
+      ]
+    }
+  }
+}
