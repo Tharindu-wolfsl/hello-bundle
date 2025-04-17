@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shared_header_logos",
+  "info": {
+    "displayName": "header-logo",
+    "icon": "brush"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
